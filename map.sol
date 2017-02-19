@@ -1,6 +1,8 @@
 /// @title BITNATION citizens map
 
-contract map {
+pragma solidity ^0.4.0;
+
+contract BitnationMap {
 	// Hold all the rigistered citizens
 	address[] public citizens;
 	// Associate a citizen and a location
@@ -21,7 +23,7 @@ contract map {
 	function getNbCitizensLocation(string location) returns (uint) {
 		uint nb = 0;
 		for (uint i=0; i < citizens.length; ++i) {
-			if (register[citizens[i]] == location) {
+			if (sha3(register[citizens[i]]) == sha3(location)) {
 				nb++;
 			}
 		}
@@ -36,3 +38,4 @@ contract map {
 		return false;
 	}
 }
+
